@@ -1,6 +1,6 @@
 import create from 'zustand';
 
-interface User {
+export interface User {
   id: number;
   name: string;
   email: string;
@@ -13,7 +13,7 @@ interface UserState {
 }
 
 const useUserStore = create<UserState>((set) => ({
-  users: [],
+  users: [] as User[],
   addUser: (user) => set((state) => ({ users: [...state.users, user] })),
   clearUsers: () => set({ users: [] }),
 }));

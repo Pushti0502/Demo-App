@@ -12,14 +12,14 @@ const Registration: React.FC = () => {
         <h1>Registration</h1>
         <Formik
           initialValues={{ name: '', email: '' }}
-          validationSchema={Yup.object({
+          validationSchema={ Yup.object({
             name: Yup.string().required('Name is required'),
             email: Yup.string().email('Invalid email address').required('Email is required'),
           })}
           onSubmit={(values, { setSubmitting, resetForm }) => {
             setTimeout(() => {
               addUser({
-                id: Date.now(),  // Using timestamp as a simple unique ID
+                id: Date.now(),  
                 name: values.name,
                 email: values.email,
               });
