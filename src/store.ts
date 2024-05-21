@@ -4,17 +4,18 @@ interface User {
   id: number;
   name: string;
   email: string;
-
 }
 
 interface UserState {
-  user: User | null;
-  setUser: (user: User | null) => void;
+  users: User[];
+  addUser: (user: User) => void;
+  clearUsers: () => void;
 }
 
 const useUserStore = create<UserState>((set) => ({
-  user: null,
-  setUser: (user) => set({ user }),
+  users: [],
+  addUser: (user) => set((state) => ({ users: [...state.users, user] })),
+  clearUsers: () => set({ users: [] }),
 }));
 
 export default useUserStore;
